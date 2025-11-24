@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/Background_Full-0001.png" id="1_bg"]
+[ext_resource type="PackedScene" path="res://src/actors/Player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://src/ui/HUD.tscn" id="3_hud"]
+[ext_resource type="Script" path="res://src/managers/spawn_manager.gd" id="4_spawner"]
+[ext_resource type="PackedScene" path="res://src/actors/Enemy.tscn" id="5_enemy"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1600.0
+offset_bottom = 900.0
+texture = ExtResource("1_bg")
+stretch_mode = 1
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("2_player")]
+position = Vector2(800, 450)
+
+[node name="HUD" parent="." instance=ExtResource("3_hud")]
+
+[node name="SpawnManager" type="Node" parent="."]
+script = ExtResource("4_spawner")
+enemy_scene = ExtResource("5_enemy")
