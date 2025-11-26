@@ -1,24 +1,32 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://csoqpvo7wu3bu"]
 
-[ext_resource type="Texture2D" path="res://assets/Background_Full-0001.png" id="1_bg"]
+[ext_resource type="Texture2D" uid="uid://7ig4c3yggc0g" path="res://assets/Background_Full-0001.png" id="1_bg"]
+[ext_resource type="Script" uid="uid://dtwwnutsx5qny" path="res://src/main.gd" id="1_script"]
 [ext_resource type="PackedScene" path="res://src/actors/Player.tscn" id="2_player"]
-[ext_resource type="PackedScene" path="res://src/ui/HUD.tscn" id="3_hud"]
-[ext_resource type="Script" path="res://src/managers/spawn_manager.gd" id="4_spawner"]
-[ext_resource type="PackedScene" path="res://src/actors/Enemy.tscn" id="5_enemy"]
+[ext_resource type="PackedScene" path="res://src/managers/SpawnManager.tscn" id="3_spawner"]
+[ext_resource type="PackedScene" path="res://src/ui/HUD.tscn" id="4_hud"]
+[ext_resource type="PackedScene" path="res://src/ui/UpgradeScreen.tscn" id="5_upgrade"]
+[ext_resource type="PackedScene" path="res://src/ui/StartMenu.tscn" id="6_start"]
+[ext_resource type="PackedScene" path="res://src/ui/GameOverScreen.tscn" id="7_gameover"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_script")
 
 [node name="Background" type="TextureRect" parent="."]
-offset_right = 1600.0
-offset_bottom = 900.0
+offset_right = 2304.0
+offset_bottom = 2304.0
 texture = ExtResource("1_bg")
 stretch_mode = 1
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("2_player")]
+[node name="Player" parent="." instance=ExtResource("2_player")]
 position = Vector2(800, 450)
 
-[node name="HUD" parent="." instance=ExtResource("3_hud")]
+[node name="SpawnManager" parent="." instance=ExtResource("3_spawner")]
 
-[node name="SpawnManager" type="Node" parent="."]
-script = ExtResource("4_spawner")
-enemy_scene = ExtResource("5_enemy")
+[node name="HUD" parent="." instance=ExtResource("4_hud")]
+
+[node name="UpgradeScreen" parent="." instance=ExtResource("5_upgrade")]
+
+[node name="StartMenu" parent="." instance=ExtResource("6_start")]
+
+[node name="GameOverScreen" parent="." instance=ExtResource("7_gameover")]
