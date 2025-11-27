@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://csoqpvo7wu3bu"]
 
-[ext_resource type="Texture2D" uid="uid://7ig4c3yggc0g" path="res://assets/Background_Full-0001.png" id="1_bg"]
+[ext_resource type="Texture2D" uid="uid://nc4plwv3mbbo" path="res://assets/ComfyUI_00018_.png" id="1_bg"]
 [ext_resource type="Script" uid="uid://dtwwnutsx5qny" path="res://src/main.gd" id="1_script"]
 [ext_resource type="PackedScene" path="res://src/actors/Player.tscn" id="2_player"]
 [ext_resource type="PackedScene" path="res://src/managers/SpawnManager.tscn" id="3_spawner"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://src/ui/UpgradeScreen.tscn" id="5_upgrade"]
 [ext_resource type="PackedScene" path="res://src/ui/StartMenu.tscn" id="6_start"]
 [ext_resource type="PackedScene" path="res://src/ui/GameOverScreen.tscn" id="7_gameover"]
+[ext_resource type="PackedScene" path="res://src/ui/SpriteDebugScreen.tscn" id="8_debug"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_script")
@@ -28,5 +29,7 @@ position = Vector2(800, 450)
 [node name="UpgradeScreen" parent="." instance=ExtResource("5_upgrade")]
 
 [node name="StartMenu" parent="." instance=ExtResource("6_start")]
+
+[node name="SpriteDebugScreen" parent="." instance=ExtResource("8_debug")]
 
 [node name="GameOverScreen" parent="." instance=ExtResource("7_gameover")]

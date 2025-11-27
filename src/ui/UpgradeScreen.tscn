@@ -50,9 +50,6 @@ text = "Spread
 +5%"
 
 [node name="MagnetCard" type="Button" parent="Control/HBoxContainer"]
-layout_mode = 2
-
-[node name="MagnetCard" type="Button" parent="Control/HBoxContainer"]
 custom_minimum_size = Vector2(150, 200)
 layout_mode = 2
 text = "Magnet Area

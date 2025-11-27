@@ -5,6 +5,7 @@ extends Node2D
 @onready var upgrade_screen: CanvasLayer = $UpgradeScreen
 @onready var start_menu: CanvasLayer = $StartMenu
 @onready var game_over_screen: CanvasLayer = $GameOverScreen
+@onready var sprite_debug_screen: CanvasLayer = $SpriteDebugScreen
 @onready var spawn_manager: Node = $SpawnManager
 
 func _ready() -> void:
@@ -27,10 +28,23 @@ func _ready() -> void:
 	
 	if start_menu:
 		start_menu.start_game.connect(_on_start_game)
+		start_menu.debug_sprites.connect(_on_debug_sprites)
+		
+	if sprite_debug_screen:
+		sprite_debug_screen.hide()
+		sprite_debug_screen.back_pressed.connect(_on_debug_back)
 
 func _on_start_game() -> void:
 	# Game starts unpaused (handled by start menu hiding and unpausing tree)
 	pass
+
+func _on_debug_sprites() -> void:
+	start_menu.hide()
+	sprite_debug_screen.show()
+
+func _on_debug_back() -> void:
+	sprite_debug_screen.hide()
+	start_menu.show()
 
 func _on_player_died() -> void:
 	game_over_screen.game_over()
@@ -49,7 +63,7 @@ func _on_level_up(level: int) -> void:
 func _on_upgrade_selected(type: String) -> void:
 	match type:
 		"speed":
-			player.fire_rate *= 0.9 # 10% faster (approx)
+			player.fire_rate *= 0.75 # 25% faster (was 10%)
 		"spread":
 			player.projectile_count += 1
 		"max_hp":

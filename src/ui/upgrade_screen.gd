@@ -35,7 +35,7 @@ func set_options(options: Array) -> void:
 			
 	else:
 		# Default: Show all 3 standard upgrades
-		speed_card.text = "Fire Rate\n+10%"
+		speed_card.text = "Fire Rate\n+25%"
 		speed_card.show()
 		if speed_card.is_connected("pressed", _on_max_hp_pressed):
 			speed_card.pressed.disconnect(_on_max_hp_pressed)

@@ -11,7 +11,7 @@ class_name Player
 # Combat Stats
 @export var max_hp: int = 10
 @export var fire_rate: float = 0.5
-@export var projectile_count: int = 1
+@export var projectile_count: int = 20 # testing FIXME: after sprite fix
 @export var spread_angle: float = 15.0 # Degrees between bullets if multiple
 @export var homing_bullets: bool = false
 
@@ -161,7 +161,7 @@ func collect_powerup(type: int) -> void:
 			print("Powerup: Speed")
 
 func _on_magnet_area_entered(area: Area2D) -> void:
-	if area.is_in_group("gem") and area.has_method("start_magnet"):
+	if (area.is_in_group("gem") or area.has_method("collect_powerup") or area.has_method("start_magnet")) and area.has_method("start_magnet"):
 		area.start_magnet(self)
 
 func increase_pickup_range(percent: float) -> void:
